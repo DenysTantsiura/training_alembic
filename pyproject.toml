@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "training-alembic"
+version = "0.1.0"
+description = ""
+authors = ["Denys Tantsiura <ghost0002501@gmail.com>"]
+readme = "README.md"
+packages = [{include = "training_alembic"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+alembic = "^1.9.4"
+sqlalchemy = "^2.0.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
