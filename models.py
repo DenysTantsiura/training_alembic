@@ -9,6 +9,7 @@ from sqlalchemy.sql.sqltypes import DateTime
 
 Base = declarative_base()
 
+
 # таблиця для зв'язку many-to-many між таблицями notes та tags
 note_m2m_tag = Table(
     "note_m2m_tag",
@@ -17,6 +18,7 @@ note_m2m_tag = Table(
     Column("note", Integer, ForeignKey("notes.id", ondelete="CASCADE")),
     Column("tag", Integer, ForeignKey("tags.id", ondelete="CASCADE")),
 )
+
 
 # Таблиця notes, де зберігатимуться назви завдань
 class Note(Base):
@@ -34,6 +36,7 @@ class Note(Base):
     таблиці secondary=note_m2m_tag здійснили зв'язок багато до багатьох, 
     щоб отримувати доступ до тегів завдання.'''
 
+
 # Таблиця records, де зберігатимуться записи справ для конкретного завдання з таблиці notes - зв'язок one-to-many, поле note_id
 class Record(Base):
     __tablename__ = "records"
@@ -42,6 +45,7 @@ class Record(Base):
     done = Column(Boolean, default=False)
     # ondelete="CASCADE" -> при видаленні запису з таблиці notes ми видалимо автоматично всі пов'язані записи у таблиці records
     note_id = Column(Integer, ForeignKey(Note.id, ondelete="CASCADE"))
+
 
 # Таблиця tags, де зберігається набір тегів для списку справ.
 class Tag(Base):
